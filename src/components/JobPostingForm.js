@@ -14,17 +14,17 @@ const SimpleRichTextEditor = ({ value, onChange }) => {
       </tr>
       <tr>
         <td style="border: 1px solid #ccc; padding: 8px" rowspan="3"></td>
-        <td style="border: 1px solid #ccc; padding: 8px;">담당업무</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">담당 업무</td>
         <td style="border: 1px solid #ccc; padding: 8px;"></td>
       </tr>
       <tr>
 
-        <td style="border: 1px solid #ccc; padding: 8px;">필수자격</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">필수 자격</td>
         <td style="border: 1px solid #ccc; padding: 8px;"></td>
       </tr>
       <tr>
 
-        <td style="border: 1px solid #ccc; padding: 8px;">우대사항</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">우대 사항</td>
         <td style="border: 1px solid #ccc; padding: 8px;"></td>
       </tr>
     </tbody>
