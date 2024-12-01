@@ -131,17 +131,17 @@ const Preview = ({ title, description, benefits }) => {
       if (cells.length > 0) {
         // 첫 번째 열의 너비 설정 (모집부문)
         if (cells[0]) {
-          cells[0].style.width = "20%";
+          cells[0].style.width = "25%";
         }
 
         // 두 번째 열의 너비 설정 (구분)
         if (cells[1]) {
-          cells[1].style.width = "15%";
+          cells[1].style.width = "20%";
         }
 
         // 세 번째 열의 너비 설정 (상세요강)
         if (cells[2]) {
-          cells[2].style.width = "65%";
+          cells[2].style.width = "55%";
         }
 
         // 첫 번째 행은 모든 셀이 가운데 정렬
