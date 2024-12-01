@@ -311,154 +311,159 @@ const Preview = ({ title, description, benefits }) => {
   };
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-4 h-full flex flex-col">
       <button
         onClick={copyHtmlToClipboard}
         className="w-full px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors"
       >
         HTML 복사하기
       </button>
-      <div ref={previewRef} className="bg-white w-full">
-        <div className="relative w-full">
+
+      <div className="flex-1 overflow-hidden">
+        {" "}
+        {/* 스크롤 컨테이너 */}
+        <div ref={previewRef} className="bg-white w-full h-full overflow-auto">
+          <div className="relative w-full">
+            <img
+              src="https://gw.rapigen.com/editor/userfiles/rapigen.com/ysjang/7fd470c141768aece718997afc5d03da/ysjang_bd5bd5aa8c1610d771c79a1f13962cd.png"
+              alt=""
+              className="w-full h-auto"
+              style={{ objectFit: "contain" }}
+            />
+            <h1 className="absolute z-10 bottom-[22%] left-[8%] text-white">
+              <span style={{ fontSize: "calc(100% + 2vmin)" }}>{title}</span>
+            </h1>
+          </div>
+
           <img
-            src="https://gw.rapigen.com/editor/userfiles/rapigen.com/ysjang/7fd470c141768aece718997afc5d03da/ysjang_bd5bd5aa8c1610d771c79a1f13962cd.png"
+            src="https://gw.rapigen.com/editor/userfiles/rapigen.com/ysjang/d311c1a92c894d387d18d7d681b297ae/ysjang_505b102fc405106b8f6b83264e22078.jpg"
             alt=""
             className="w-full h-auto"
             style={{ objectFit: "contain" }}
           />
-          <h1 className="absolute z-10 bottom-[22%] left-[8%] text-white">
-            <span style={{ fontSize: "calc(100% + 2vmin)" }}>{title}</span>
-          </h1>
-        </div>
 
-        <img
-          src="https://gw.rapigen.com/editor/userfiles/rapigen.com/ysjang/d311c1a92c894d387d18d7d681b297ae/ysjang_505b102fc405106b8f6b83264e22078.jpg"
-          alt=""
-          className="w-full h-auto"
-          style={{ objectFit: "contain" }}
-        />
-
-        <div
-          className="w-full mt-[2%] mb-[7%]"
-          style={{ width: "100%", display: "flex", justifyContent: "center" }}
-        >
           <div
-            style={{ width: "100%" }}
-            dangerouslySetInnerHTML={{ __html: addTableStyles(description) }}
-          />
-        </div>
+            className="w-full mt-[2%] mb-[7%]"
+            style={{ width: "100%", display: "flex", justifyContent: "center" }}
+          >
+            <div
+              style={{ width: "100%" }}
+              dangerouslySetInnerHTML={{ __html: addTableStyles(description) }}
+            />
+          </div>
 
-        <img
-          src="https://gw.rapigen.com/editor/userfiles/rapigen.com/ysjang/260681e018726aeb38ddf3a04bb53be7/ysjang_7e45263c31c5df29b8010768df479c0.jpg"
-          alt=""
-          className="w-full h-auto mb-[10%]"
-          style={{ objectFit: "contain" }}
-        />
-
-        <div className="w-full bg-[#cf152d] pb-[10%]">
           <img
-            src="https://gw.rapigen.com/editor/userfiles/rapigen.com/ysjang/568a2af3af0a1c87807089dc6a681c6b/ysjang_150057b7d11fb9397e0fd22a88ecf7b.jpg"
+            src="https://gw.rapigen.com/editor/userfiles/rapigen.com/ysjang/260681e018726aeb38ddf3a04bb53be7/ysjang_7e45263c31c5df29b8010768df479c0.jpg"
             alt=""
-            className="w-full h-auto mb-[2%]"
+            className="w-full h-auto mb-[10%]"
             style={{ objectFit: "contain" }}
           />
-          <div className="w-[90%] bg-white rounded-3xl mx-auto py-[3%]">
-            {Object.entries(benefits).map(
-              ([category, items], index) =>
-                items.length > 0 && (
-                  <React.Fragment key={category}>
-                    <div className="w-full flex">
-                      <div className="w-[12%] my-auto ml-[6%]">
-                        <img
-                          src={getCategoryIcon(category)}
-                          alt=""
-                          className="w-full h-auto max-w-[60px]"
-                          style={{ objectFit: "contain" }}
-                        />
-                      </div>
-                      <div
-                        className="w-[70%] mr-[6%] py-[5%]"
-                        style={{ marginLeft: "20px" }}
-                      >
-                        <h3>
-                          <p className="leading-[1.8]">
-                            <b>
-                              <span
-                                className="mb-[5%]"
-                                style={{ fontSize: "calc(100% + 1vmin)" }}
-                              >
-                                {category}
-                              </span>
-                            </b>
-                          </p>
-                        </h3>
-                        <p
-                          className="text-base"
-                          style={{
-                            fontSize: "16px",
-                            lineHeight: "20px",
-                            wordBreak: "keep-all",
-                            wordWrap: "break-word",
-                          }}
+
+          <div className="w-full bg-[#cf152d] pb-[10%]">
+            <img
+              src="https://gw.rapigen.com/editor/userfiles/rapigen.com/ysjang/568a2af3af0a1c87807089dc6a681c6b/ysjang_150057b7d11fb9397e0fd22a88ecf7b.jpg"
+              alt=""
+              className="w-full h-auto mb-[2%]"
+              style={{ objectFit: "contain" }}
+            />
+            <div className="w-[90%] bg-white rounded-3xl mx-auto py-[3%]">
+              {Object.entries(benefits).map(
+                ([category, items], index) =>
+                  items.length > 0 && (
+                    <React.Fragment key={category}>
+                      <div className="w-full flex">
+                        <div className="w-[12%] my-auto ml-[6%]">
+                          <img
+                            src={getCategoryIcon(category)}
+                            alt=""
+                            className="w-full h-auto max-w-[60px]"
+                            style={{ objectFit: "contain" }}
+                          />
+                        </div>
+                        <div
+                          className="w-[70%] mr-[6%] py-[5%]"
+                          style={{ marginLeft: "20px" }}
                         >
-                          {items.join(", ")}
-                        </p>
+                          <h3>
+                            <p className="leading-[1.8]">
+                              <b>
+                                <span
+                                  className="mb-[5%]"
+                                  style={{ fontSize: "calc(100% + 1vmin)" }}
+                                >
+                                  {category}
+                                </span>
+                              </b>
+                            </p>
+                          </h3>
+                          <p
+                            className="text-base"
+                            style={{
+                              fontSize: "16px",
+                              lineHeight: "20px",
+                              wordBreak: "keep-all",
+                              wordWrap: "break-word",
+                            }}
+                          >
+                            {items.join(", ")}
+                          </p>
+                        </div>
                       </div>
-                    </div>
-                    {index <
-                      Object.entries(benefits).filter(
-                        ([_, items]) => items.length > 0
-                      ).length -
-                        1 && (
-                      <div className="w-[88%] h-px bg-gray-300 mx-auto" />
-                    )}
-                  </React.Fragment>
-                )
-            )}
+                      {index <
+                        Object.entries(benefits).filter(
+                          ([_, items]) => items.length > 0
+                        ).length -
+                          1 && (
+                        <div className="w-[88%] h-px bg-gray-300 mx-auto" />
+                      )}
+                    </React.Fragment>
+                  )
+              )}
+            </div>
           </div>
-        </div>
 
-        <img
-          src="https://gw.rapigen.com/editor/userfiles/rapigen.com/ysjang/2f92048a74054d86229a54d43ff1edf4/ysjang_292034ce62a1bdb3cda65d01f4d7c69.jpg"
-          alt=""
-          className="w-full h-auto mt-[10%]"
-          style={{ objectFit: "contain" }}
-        />
-
-        <div className="w-full mb-[6%]">
           <img
-            src="https://gw.rapigen.com/editor/userfiles/rapigen.com/ysjang/6741eda181315f1cf66857c18cdccf24/ysjang_7aeb33ed65f9d764b977c525177e271.jpg"
+            src="https://gw.rapigen.com/editor/userfiles/rapigen.com/ysjang/2f92048a74054d86229a54d43ff1edf4/ysjang_292034ce62a1bdb3cda65d01f4d7c69.jpg"
             alt=""
-            className="w-full h-auto mt-[5%]"
+            className="w-full h-auto mt-[10%]"
             style={{ objectFit: "contain" }}
           />
-          <div className="w-full flex justify-center bg-white">
-            {getFooterLinks().map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="block w-[22%] mx-[2%] my-[1%]"
-                target="_blank"
-                title={link.title}
-              >
-                <div className="relative w-full pb-[100%]">
-                  <img
-                    src={link.imgSrc}
-                    alt=""
-                    className="absolute top-0 left-0 w-full h-full object-contain"
-                  />
-                </div>
-              </a>
-            ))}
-          </div>
-        </div>
 
-        <img
-          src="https://gw.rapigen.com/editor/userfiles/rapigen.com/ysjang/53cdfda7630194cd1cb12dacffc7fad9/ysjang_db06d30522c45ed059a5a1ddf278b98.jpg"
-          alt=""
-          className="w-full h-auto"
-          style={{ objectFit: "contain" }}
-        />
+          <div className="w-full mb-[6%]">
+            <img
+              src="https://gw.rapigen.com/editor/userfiles/rapigen.com/ysjang/6741eda181315f1cf66857c18cdccf24/ysjang_7aeb33ed65f9d764b977c525177e271.jpg"
+              alt=""
+              className="w-full h-auto mt-[5%]"
+              style={{ objectFit: "contain" }}
+            />
+            <div className="w-full flex justify-center bg-white">
+              {getFooterLinks().map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className="block w-[22%] mx-[2%] my-[1%]"
+                  target="_blank"
+                  title={link.title}
+                >
+                  <div className="relative w-full pb-[100%]">
+                    <img
+                      src={link.imgSrc}
+                      alt=""
+                      className="absolute top-0 left-0 w-full h-full object-contain"
+                    />
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+
+          <img
+            src="https://gw.rapigen.com/editor/userfiles/rapigen.com/ysjang/53cdfda7630194cd1cb12dacffc7fad9/ysjang_db06d30522c45ed059a5a1ddf278b98.jpg"
+            alt=""
+            className="w-full h-auto"
+            style={{ objectFit: "contain" }}
+          />
+        </div>
       </div>
     </div>
   );
@@ -611,8 +616,8 @@ const JobPostingForm = () => {
   };
 
   return (
-    <div className="flex gap-4">
-      <div className="w-1/2 p-4 border rounded-lg">
+    <div className="flex gap-4 h-screen max-h-screen p-4 box-border fixed inset-0">
+      <div className="w-1/2 p-4 border rounded-lg overflow-auto">
         <div className="mb-4">
           <label className="block text-sm font-medium mb-2">채용 제목</label>
           <input
@@ -709,7 +714,7 @@ const JobPostingForm = () => {
         </div>
       </div>
 
-      <div className="w-1/2 p-4 border rounded-lg overflow-auto">
+      <div className="w-1/2 p-4 border rounded-lg overflow-hidden flex flex-col">
         <Preview title={title} description={description} benefits={benefits} />
       </div>
     </div>
