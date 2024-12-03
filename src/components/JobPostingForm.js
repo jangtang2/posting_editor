@@ -183,7 +183,7 @@ const Preview = ({ title, description, benefits }) => {
          alt=""
          style="width: 100% !important; height: auto !important; object-fit: contain !important; display: block !important; max-width: 100% !important;" />
 
-    <div style="width: 100% !important; margin-top: 2% !important; margin-bottom: 7% !important; display: flex !important; justify-content: center !important;">
+    <div style="width: 100% !important; margin-top: 2% !important; margin-bottom: 7% !important; display: block !important; justify-content: center !important;">
       ${addTableStyles(description)}
     </div>
 
@@ -344,7 +344,11 @@ const Preview = ({ title, description, benefits }) => {
 
           <div
             className="w-full mt-[2%] mb-[7%]"
-            style={{ width: "100%", display: "flex", justifyContent: "center" }}
+            style={{
+              width: "100%",
+              display: "block",
+              justifyContent: "center",
+            }}
           >
             <div
               style={{ width: "100%" }}
