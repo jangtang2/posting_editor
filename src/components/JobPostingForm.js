@@ -117,7 +117,7 @@ const Preview = ({ title, description, benefits }) => {
     // tbody의 첫 번째 tr 찾기 (헤더 행)
     styledHtml = styledHtml.replace(
       /<tbody>\s*<tr>/,
-      '<tbody><tr style="background-color: #f9fafb !important; text-align: center !important;">'
+      '<tbody><tr style="background-color: #cf152d !important; text-align: center !important; color: white !important;">'
     );
 
     // HTML을 파싱하고 셀 스타일을 수정
