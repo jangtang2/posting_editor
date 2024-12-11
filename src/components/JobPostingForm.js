@@ -107,7 +107,7 @@ const Preview = ({ title, description, benefits }) => {
     styledHtml = styledHtml
       .replace(
         /<table/g,
-        '<table style="border-collapse: collapse !important; border: 1px solid #e5e7eb !important; width: 100% !important; table-layout: fixed !important;"'
+        '<table style="border-collapse: collapse !important; border: 1px solid #D7D3BF !important; width: 100% !important; table-layout: fixed !important;"'
       )
       .replace(
         /<td/g,
