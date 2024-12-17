@@ -554,19 +554,19 @@ const defaultBenefits = {
 // 푸터 링크 정보를 반환하는 헬퍼 함수
 const getFooterLinks = () => [
   {
-    href: "https://www.rapigen-inc.com/main/?skin=sub1_1.html",
+    href: "https://www.rapigen.co.kr/main/?skin=sub1_1.html",
     title: "래피젠 기업소개 보러가기",
     imgSrc:
       "https://gw.rapigen.com/editor/userfiles/rapigen.com/ysjang/98b24b8185dd573bfc11828e806d929f/ysjang_0761ac10d6a91a086fbabdf9ea1d826.jpg",
   },
   {
-    href: "https://www.rapigen-inc.com/modules/board/bd_list.html?id=news",
+    href: "https://www.rapigen.co.kr/modules/board/bd_list.html?id=news",
     title: "래피젠 회사소식 보러가기",
     imgSrc:
       "https://gw.rapigen.com/editor/userfiles/rapigen.com/ysjang/652ed7982a9c1040414fe5d083e09c13/ysjang_299079d95117c65a25996dd2f80098f.jpg",
   },
   {
-    href: "https://www.rapigen-inc.com/modules/board/bd_list.html?id=careers",
+    href: "https://www.rapigen.co.kr/modules/board/bd_list.html?id=careers",
     title: "래피젠 채용공고 보러가기",
     imgSrc:
       "https://gw.rapigen.com/editor/userfiles/rapigen.com/ysjang/810ccdb964d5af66fe5841b94278e743/ysjang_e9403a9f7ea8b8add57873c52b78632.jpg",
