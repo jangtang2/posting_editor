@@ -183,7 +183,7 @@ const Preview = ({ title, description, benefits }) => {
          alt=""
          style="width: 100% !important; height: auto !important; object-fit: contain !important; display: block !important; max-width: 100% !important;" />
 
-    <div style="width: 100% !important; margin-top: 2% !important; margin-bottom: 7% !important; display: block !important; justify-content: center !important;">
+    <div style="width: 100% !important; height: fit-content !important; margin-top: 2% !important; margin-bottom: 7% !important; display: block !important; justify-content: center !important;">
       ${addTableStyles(description)}
     </div>
 
