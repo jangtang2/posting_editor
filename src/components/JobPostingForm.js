@@ -111,7 +111,7 @@ const Preview = ({ title, description, benefits }) => {
       )
       .replace(
         /<td/g,
-        '<td style="border: 1px solid #e5e7eb !important; padding: 8px !important; text-align: center !important; word-break: keep-all !important; word-wrap: break-word !important; font-size: clamp(0.75rem, 1vw, 1rem) !important; line-height: clamp(1.25rem, 1.5vw, 1.5rem) !important;"'
+        '<td style="border: 1px solid #e5e7eb !important; padding: 8px !important; text-align: center !important; word-break: keep-all !important; word-wrap: break-word !important; font-size: clamp(0.9rem, 1vw, 1rem) !important; line-height: clamp(1.25rem, 1.5vw, 1.5rem) !important;"'
       );
 
     // tbody의 첫 번째 tr 찾기 (헤더 행)
@@ -175,7 +175,7 @@ const Preview = ({ title, description, benefits }) => {
            alt=""
            style="width: 100% !important; height: auto !important; object-fit: contain !important; display: block !important; max-width: 100% !important;" />
       <h1 style="color: #ffffff !important; position: absolute !important; z-index: 5 !important; bottom: 22% !important; left: 8% !important; margin: 0 !important;">
-        <span style="font-size: calc(100% + 2vmin) !important;">${title}</span>
+        <span style="font-size: calc(100% + 2.5vmin) !important;">${title}</span>
       </h1>
     </div>
 
