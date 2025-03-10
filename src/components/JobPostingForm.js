@@ -91,107 +91,6 @@ const SimpleRichTextEditor = ({ value, onChange }) => {
   );
 };
 
-// 카테고리별 아이콘 URL을 반환하는 헬퍼 함수
-const getCategoryIcon = (category) => {
-  const icons = {
-    "기본 복지":
-      "https://gw.rapigen.com/editor/userfiles/rapigen.com/ysjang/9bc3bf7dfa93812f1494fdbe9628fbeb/ysjang_1d7d5b7e992648335bcfe55c0fa2a49.jpg",
-    지원제도:
-      "https://gw.rapigen.com/editor/userfiles/rapigen.com/ysjang/5b0bd4b6049cc793a76b54a1b78d86e4/ysjang_22bc14c4f56363436b8748cf01d75ca.jpg",
-    리프레시:
-      "https://gw.rapigen.com/editor/userfiles/rapigen.com/ysjang/8991c4392308ef36834537de471a595f/ysjang_ab2f6f80a6657ae17b1a7a18b26a640.jpg",
-    "식사 및 간식":
-      "https://gw.rapigen.com/editor/userfiles/rapigen.com/ysjang/372369272faf2c398f7eaa1f01e7bde1/ysjang_8e229e31aee1ebfc18e6fa99e2ebbbe.jpg",
-    "숙소/여행":
-      "https://gw.rapigen.com/editor/userfiles/rapigen.com/ysjang/363bec799a1f2ddfbac3b8fd91f70f5a/ysjang_346edad3d0b904fbf6145c31511f009.jpg",
-    "교육/행사":
-      "https://gw.rapigen.com/editor/userfiles/rapigen.com/ysjang/611f57bc34145d31759dce6022690427/ysjang_0889f99a530f2706e4c3e0dba0022ce.jpg",
-    근무환경:
-      "https://gw.rapigen.com/editor/userfiles/rapigen.com/ysjang/88dc0b12565ba6147081e4d15fa6da02/ysjang_b75ec5ec470ae62b8e0876ee88d3355.jpg",
-  };
-  return icons[category];
-};
-
-// 푸터 링크 정보를 반환하는 헬퍼 함수
-const getFooterLinks = () => [
-  {
-    href: "https://www.rapigen.co.kr/main/?skin=sub1_1.html",
-    title: "래피젠 기업소개 보러가기",
-    imgSrc:
-      "https://gw.rapigen.com/editor/userfiles/rapigen.com/ysjang/98b24b8185dd573bfc11828e806d929f/ysjang_0761ac10d6a91a086fbabdf9ea1d826.jpg",
-  },
-  {
-    href: "https://www.rapigen.co.kr/modules/board/bd_list.html?id=news",
-    title: "래피젠 회사소식 보러가기",
-    imgSrc:
-      "https://gw.rapigen.com/editor/userfiles/rapigen.com/ysjang/652ed7982a9c1040414fe5d083e09c13/ysjang_299079d95117c65a25996dd2f80098f.jpg",
-  },
-  {
-    href: "https://www.rapigen.co.kr/modules/board/bd_list.html?id=careers",
-    title: "래피젠 채용공고 보러가기",
-    imgSrc:
-      "https://gw.rapigen.com/editor/userfiles/rapigen.com/ysjang/810ccdb964d5af66fe5841b94278e743/ysjang_e9403a9f7ea8b8add57873c52b78632.jpg",
-  },
-];
-
-// 기본 복리후생 데이터
-const defaultBenefits = {
-  "기본 복지": [
-    "4대보험",
-    "퇴직연금",
-    "인센티브",
-    "장기근속자 포상",
-    "우수사원 포상",
-    "격려금",
-    "건강검진",
-    "웰컴키트",
-    "사원증",
-  ],
-  지원제도: [
-    "전세 및 주택 구입자금 대출 지원",
-    "명절/근로자의 날 선물",
-    "연말 선물",
-    "생일 선물",
-    "각종 경조사 지원",
-    "자사 제품 할인",
-    "근무복 제공",
-  ],
-  리프레시: [
-    "연차/반차",
-    "여름 휴가",
-    "경조 휴가",
-    "리프레시 휴가",
-    "육아휴직",
-    "산전 후 휴가",
-    "배우자 출산 휴가",
-    "임산부 근로시간 단축",
-  ],
-  "식사 및 간식": ["점식/석식", "간식", "카페테리아", "커피머신 지원"],
-  "숙소/여행": [
-    "휴양지 숙소 무료 제공(양평, 고성)",
-    "법인 콘도 이용",
-    "제주 연수원 할인",
-  ],
-  "교육/행사": [
-    "중간관리자교육",
-    "우수사원시상",
-    "워크샵",
-    "신입사원교육(OJT)",
-    "교육지원",
-    "창립기념일 행사",
-    "송년 행사",
-    "수습만료 행사",
-  ],
-  근무환경: [
-    "전용 사옥 & 주차장",
-    "법인 차량",
-    "국내외 학회/전시회 참석",
-    "휴게실",
-    "샤워실",
-    "입고싶은 옷 & 기르고 싶은 머리 자유롭게 가능",
-  ],
-};
-
 const Preview = ({ title, description, benefits }) => {
   const previewRef = useRef(null);
   const [isCapturing, setIsCapturing] = useState(false);
@@ -214,7 +113,7 @@ const Preview = ({ title, description, benefits }) => {
       )
       .replace(
         /<td/g,
-        '<td style="border:, 1px solid #e5e7eb !important; padding: 8px !important; text-align: center !important; word-break: keep-all !important; word-wrap: break-word !important; font-size: clamp(0.9rem, 1vw, 1rem) !important; line-height: clamp(1.25rem, 1.5vw, 1.5rem) !important;"'
+        '<td style="border: 1px solid #e5e7eb !important; padding: 8px !important; text-align: center !important; word-break: keep-all !important; word-wrap: break-word !important; font-size: clamp(0.9rem, 1vw, 1rem) !important; line-height: clamp(1.25rem, 1.5vw, 1.5rem) !important;"'
       );
 
     // tbody의 첫 번째 tr 찾기 (헤더 행)
@@ -468,15 +367,15 @@ const Preview = ({ title, description, benefits }) => {
       <div className="flex gap-2">
         <button
           onClick={copyHtmlToClipboard}
-          className="flex-1 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors flex items-center justify-center gap-2"
+          className="w-full px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors"
         >
-          <span>HTML 복사하기</span>
+          HTML 복사하기
         </button>
 
         <button
           onClick={saveAsImage}
           disabled={isCapturing}
-          className={`flex-1 px-4 py-2 rounded flex items-center justify-center gap-2 transition-colors ${
+          className={`px-4 py-2 rounded flex items-center justify-center gap-2 transition-colors ${
             isCapturing
               ? "bg-gray-400 text-gray-200 cursor-not-allowed"
               : "bg-green-600 text-white hover:bg-green-700"
@@ -656,6 +555,107 @@ const Preview = ({ title, description, benefits }) => {
       </div>
     </div>
   );
+};
+
+// 카테고리별 아이콘 URL을 반환하는 헬퍼 함수
+const getCategoryIcon = (category) => {
+  const icons = {
+    "기본 복지":
+      "https://gw.rapigen.com/editor/userfiles/rapigen.com/ysjang/9bc3bf7dfa93812f1494fdbe9628fbeb/ysjang_1d7d5b7e992648335bcfe55c0fa2a49.jpg",
+    지원제도:
+      "https://gw.rapigen.com/editor/userfiles/rapigen.com/ysjang/5b0bd4b6049cc793a76b54a1b78d86e4/ysjang_22bc14c4f56363436b8748cf01d75ca.jpg",
+    리프레시:
+      "https://gw.rapigen.com/editor/userfiles/rapigen.com/ysjang/8991c4392308ef36834537de471a595f/ysjang_ab2f6f80a6657ae17b1a7a18b26a640.jpg",
+    "식사 및 간식":
+      "https://gw.rapigen.com/editor/userfiles/rapigen.com/ysjang/372369272faf2c398f7eaa1f01e7bde1/ysjang_8e229e31aee1ebfc18e6fa99e2ebbbe.jpg",
+    "숙소/여행":
+      "https://gw.rapigen.com/editor/userfiles/rapigen.com/ysjang/363bec799a1f2ddfbac3b8fd91f70f5a/ysjang_346edad3d0b904fbf6145c31511f009.jpg",
+    "교육/행사":
+      "https://gw.rapigen.com/editor/userfiles/rapigen.com/ysjang/611f57bc34145d31759dce6022690427/ysjang_0889f99a530f2706e4c3e0dba0022ce.jpg",
+    근무환경:
+      "https://gw.rapigen.com/editor/userfiles/rapigen.com/ysjang/88dc0b12565ba6147081e4d15fa6da02/ysjang_b75ec5ec470ae62b8e0876ee88d3355.jpg",
+  };
+  return icons[category];
+};
+
+// 푸터 링크 정보를 반환하는 헬퍼 함수
+const getFooterLinks = () => [
+  {
+    href: "https://www.rapigen.co.kr/main/?skin=sub1_1.html",
+    title: "래피젠 기업소개 보러가기",
+    imgSrc:
+      "https://gw.rapigen.com/editor/userfiles/rapigen.com/ysjang/98b24b8185dd573bfc11828e806d929f/ysjang_0761ac10d6a91a086fbabdf9ea1d826.jpg",
+  },
+  {
+    href: "https://www.rapigen.co.kr/modules/board/bd_list.html?id=news",
+    title: "래피젠 회사소식 보러가기",
+    imgSrc:
+      "https://gw.rapigen.com/editor/userfiles/rapigen.com/ysjang/652ed7982a9c1040414fe5d083e09c13/ysjang_299079d95117c65a25996dd2f80098f.jpg",
+  },
+  {
+    href: "https://www.rapigen.co.kr/modules/board/bd_list.html?id=careers",
+    title: "래피젠 채용공고 보러가기",
+    imgSrc:
+      "https://gw.rapigen.com/editor/userfiles/rapigen.com/ysjang/810ccdb964d5af66fe5841b94278e743/ysjang_e9403a9f7ea8b8add57873c52b78632.jpg",
+  },
+];
+
+// 기본 복리후생 데이터
+const defaultBenefits = {
+  "기본 복지": [
+    "4대보험",
+    "퇴직연금",
+    "인센티브",
+    "장기근속자 포상",
+    "우수사원 포상",
+    "격려금",
+    "건강검진",
+    "웰컴키트",
+    "사원증",
+  ],
+  지원제도: [
+    "전세 및 주택 구입자금 대출 지원",
+    "명절/근로자의 날 선물",
+    "연말 선물",
+    "생일 선물",
+    "각종 경조사 지원",
+    "자사 제품 할인",
+    "근무복 제공",
+  ],
+  리프레시: [
+    "연차/반차",
+    "여름 휴가",
+    "경조 휴가",
+    "리프레시 휴가",
+    "육아휴직",
+    "산전 후 휴가",
+    "배우자 출산 휴가",
+    "임산부 근로시간 단축",
+  ],
+  "식사 및 간식": ["점식/석식", "간식", "카페테리아", "커피머신 지원"],
+  "숙소/여행": [
+    "휴양지 숙소 무료 제공(양평, 고성)",
+    "법인 콘도 이용",
+    "제주 연수원 할인",
+  ],
+  "교육/행사": [
+    "중간관리자교육",
+    "우수사원시상",
+    "워크샵",
+    "신입사원교육(OJT)",
+    "교육지원",
+    "창립기념일 행사",
+    "송년 행사",
+    "수습만료 행사",
+  ],
+  근무환경: [
+    "전용 사옥 & 주차장",
+    "법인 차량",
+    "국내외 학회/전시회 참석",
+    "휴게실",
+    "샤워실",
+    "입고싶은 옷 & 기르고 싶은 머리 자유롭게 가능",
+  ],
 };
 
 const JobPostingForm = () => {
