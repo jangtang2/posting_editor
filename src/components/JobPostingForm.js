@@ -1,97 +1,10 @@
 import React, { useState, useRef, useEffect } from "react";
-import { CKEditor } from "@ckeditor/ckeditor5-react";
-import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
-import { X } from "lucide-react";
-
-const SimpleRichTextEditor = ({ value, onChange }) => {
-  const defaultTable = `
-  <table style="border-collapse: collapse; width: 100%;">
-    <tbody>
-      <tr>
-        <td style="border: 1px solid #ccc; padding: 8px; background-color: #f9fafb; font-weight: bold;">모집부문</td>
-        <td style="border: 1px solid #ccc; padding: 8px; background-color: #f9fafb; font-weight: bold;">구분</td>
-        <td style="border: 1px solid #ccc; padding: 8px; background-color: #f9fafb; font-weight: bold;">상세요강</td>
-      </tr>
-      <tr>
-        <td style="border: 1px solid #ccc; padding: 8px" rowspan="3"></td>
-        <td style="border: 1px solid #ccc; padding: 8px;">담당 업무</td>
-        <td style="border: 1px solid #ccc; padding: 8px;"></td>
-      </tr>
-      <tr>
-
-        <td style="border: 1px solid #ccc; padding: 8px;">필수 자격</td>
-        <td style="border: 1px solid #ccc; padding: 8px;"></td>
-      </tr>
-      <tr>
-
-        <td style="border: 1px solid #ccc; padding: 8px;">우대 사항</td>
-        <td style="border: 1px solid #ccc; padding: 8px;"></td>
-      </tr>
-    </tbody>
-  </table>
-`;
-
-  useEffect(() => {
-    if (!value) {
-      onChange(defaultTable);
-    }
-  }, []);
-
-  const editorConfiguration = {
-    toolbar: [
-      "heading",
-      "|",
-      "bold",
-      "italic",
-      "|",
-      "numberedList",
-      "bulletedList",
-      "|",
-      "insertTable",
-      "|",
-      "undo",
-      "redo",
-    ],
-    table: {
-      contentToolbar: ["tableColumn", "tableRow", "mergeTableCells"],
-    },
-    language: "ko",
-  };
-
-  return (
-    <div className="editor-wrapper">
-      <CKEditor
-        editor={ClassicEditor}
-        config={editorConfiguration}
-        data={value}
-        onChange={(event, editor) => {
-          const data = editor.getData();
-          onChange(data);
-        }}
-      />
-      <style>
-        {`
-          .editor-wrapper {
-            display: flex;
-            flex-direction: column;
-          }
-          .ck-editor__editable {
-            min-height: 300px;
-          }
-          .ck.ck-editor__main > .ck-editor__editable {
-            background-color: white;
-          }
-          .ck.ck-editor__main > .ck-editor__editable:focus {
-            border-color: #2563eb;
-          }
-        `}
-      </style>
-    </div>
-  );
-};
+import { X, Camera, Download } from "lucide-react";
+import html2canvas from "html2canvas";
 
 const Preview = ({ title, description, benefits }) => {
   const previewRef = useRef(null);
+  const [isCapturing, setIsCapturing] = useState(false);
 
   // 표에 스타일을 적용하는 함수
   const addTableStyles = (html) => {
@@ -310,25 +223,99 @@ const Preview = ({ title, description, benefits }) => {
     }
   };
 
+  // 이미지로 저장하는 함수
+  const saveAsImage = async () => {
+    if (!previewRef.current) return;
+
+    try {
+      setIsCapturing(true);
+
+      // 스크롤 위치 저장
+      const scrollTop = previewRef.current.scrollTop;
+
+      // 스크롤을 맨 위로 이동
+      previewRef.current.scrollTop = 0;
+
+      // 미리보기 요소의 스크롤 높이 가져오기
+      const scrollHeight = previewRef.current.scrollHeight;
+      const clientHeight = previewRef.current.clientHeight;
+
+      // 캔버스 옵션 설정
+      const options = {
+        allowTaint: true,
+        useCORS: true,
+        scrollY: 0,
+        height: scrollHeight,
+        windowHeight: scrollHeight,
+      };
+
+      // html2canvas로 캡처
+      const canvas = await html2canvas(previewRef.current, options);
+
+      // 이미지로 변환
+      const image = canvas.toDataURL("image/png");
+
+      // 다운로드 링크 생성
+      const link = document.createElement("a");
+      link.href = image;
+      link.download = `${title.replace(/\s+/g, "-")}-채용공고-${new Date()
+        .toISOString()
+        .slice(0, 10)}.png`;
+      link.click();
+
+      // 스크롤 위치 복원
+      previewRef.current.scrollTop = scrollTop;
+    } catch (error) {
+      console.error("이미지 저장 중 오류 발생:", error);
+      alert("이미지 저장 중 오류가 발생했습니다.");
+    } finally {
+      setIsCapturing(false);
+    }
+  };
+
   return (
     <div className="space-y-4 h-full flex flex-col">
-      <button
-        onClick={copyHtmlToClipboard}
-        className="w-full px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors"
-      >
-        HTML 복사하기
-      </button>
+      <div className="flex gap-2">
+        <button
+          onClick={copyHtmlToClipboard}
+          className="flex-1 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors flex items-center justify-center gap-2"
+        >
+          <span>HTML 복사하기</span>
+        </button>
+
+        <button
+          onClick={saveAsImage}
+          disabled={isCapturing}
+          className={`flex-1 px-4 py-2 rounded flex items-center justify-center gap-2 transition-colors ${
+            isCapturing
+              ? "bg-gray-400 text-gray-200 cursor-not-allowed"
+              : "bg-green-600 text-white hover:bg-green-700"
+          }`}
+        >
+          {isCapturing ? (
+            <span>저장 중...</span>
+          ) : (
+            <>
+              <Camera size={18} />
+              <span>이미지로 저장</span>
+            </>
+          )}
+        </button>
+      </div>
 
       <div className="flex-1 overflow-hidden">
-        {" "}
-        {/* 스크롤 컨테이너 */}
-        <div ref={previewRef} className="bg-white w-full h-full overflow-auto">
+        <div
+          ref={previewRef}
+          className="bg-white w-full h-full overflow-auto"
+          style={{ scrollBehavior: isCapturing ? "auto" : "smooth" }}
+        >
           <div className="relative w-full">
             <img
               src="https://gw.rapigen.com/editor/userfiles/rapigen.com/ysjang/7fd470c141768aece718997afc5d03da/ysjang_bd5bd5aa8c1610d771c79a1f13962cd.png"
               alt=""
               className="w-full h-auto"
               style={{ objectFit: "contain" }}
+              crossOrigin="anonymous"
             />
             <h1 className="absolute z-10 bottom-[22%] left-[8%] text-white">
               <span style={{ fontSize: "calc(100% + 2vmin)" }}>{title}</span>
@@ -340,6 +327,7 @@ const Preview = ({ title, description, benefits }) => {
             alt=""
             className="w-full h-auto"
             style={{ objectFit: "contain" }}
+            crossOrigin="anonymous"
           />
 
           <div
@@ -361,6 +349,7 @@ const Preview = ({ title, description, benefits }) => {
             alt=""
             className="w-full h-auto mb-[10%]"
             style={{ objectFit: "contain" }}
+            crossOrigin="anonymous"
           />
 
           <div className="w-full bg-[#cf152d] pb-[10%]">
@@ -369,6 +358,7 @@ const Preview = ({ title, description, benefits }) => {
               alt=""
               className="w-full h-auto mb-[2%]"
               style={{ objectFit: "contain" }}
+              crossOrigin="anonymous"
             />
             <div className="w-[90%] bg-white rounded-3xl mx-auto py-[3%]">
               {Object.entries(benefits).map(
@@ -382,6 +372,7 @@ const Preview = ({ title, description, benefits }) => {
                             alt=""
                             className="w-full h-auto max-w-[60px]"
                             style={{ objectFit: "contain" }}
+                            crossOrigin="anonymous"
                           />
                         </div>
                         <div
@@ -431,6 +422,7 @@ const Preview = ({ title, description, benefits }) => {
             alt=""
             className="w-full h-auto mt-[10%]"
             style={{ objectFit: "contain" }}
+            crossOrigin="anonymous"
           />
 
           <div className="w-full mb-[6%]">
@@ -439,6 +431,7 @@ const Preview = ({ title, description, benefits }) => {
               alt=""
               className="w-full h-auto mt-[5%]"
               style={{ objectFit: "contain" }}
+              crossOrigin="anonymous"
             />
             <div className="w-full flex justify-center bg-white">
               {getFooterLinks().map((link) => (
@@ -454,6 +447,7 @@ const Preview = ({ title, description, benefits }) => {
                       src={link.imgSrc}
                       alt=""
                       className="absolute top-0 left-0 w-full h-full object-contain"
+                      crossOrigin="anonymous"
                     />
                   </div>
                 </a>
@@ -466,6 +460,7 @@ const Preview = ({ title, description, benefits }) => {
             alt=""
             className="w-full h-auto"
             style={{ objectFit: "contain" }}
+            crossOrigin="anonymous"
           />
         </div>
       </div>
@@ -494,63 +489,6 @@ const getCategoryIcon = (category) => {
   return icons[category];
 };
 
-// 기본 복리후생 데이터
-const defaultBenefits = {
-  "기본 복지": [
-    "4대보험",
-    "퇴직연금",
-    "인센티브",
-    "장기근속자 포상",
-    "우수사원 포상",
-    "격려금",
-    "건강검진",
-    "웰컴키트",
-    "사원증",
-  ],
-  지원제도: [
-    "전세 및 주택 구입자금 대출 지원",
-    "명절/근로자의 날 선물",
-    "연말 선물",
-    "생일 선물",
-    "각종 경조사 지원",
-    "자사 제품 할인",
-    "근무복 제공",
-  ],
-  리프레시: [
-    "연차/반차",
-    "여름 휴가",
-    "경조 휴가",
-    "리프레시 휴가",
-    "육아휴직",
-    "산전 후 휴가",
-    "배우자 출산 휴가",
-    "임산부 근로시간 단축",
-  ],
-  "식사 및 간식": ["점식/석식", "간식", "카페테리아", "커피머신 지원"],
-  "숙소/여행": [
-    "휴양지 숙소 무료 제공(양평, 고성)",
-    "법인 콘도 이용",
-    "제주 연수원 할인",
-  ],
-  "교육/행사": [
-    "중간관리자교육",
-    "우수사원시상",
-    "워크샵",
-    "신입사원교육(OJT)",
-    "교육지원",
-    "창립기념일 행사",
-    "송년 행사",
-    "수습만료 행사",
-  ],
-  근무환경: [
-    "전용 사옥 & 주차장",
-    "법인 차량",
-    "국내외 학회/전시회 참석",
-    "휴게실",
-    "샤워실",
-    "입고싶은 옷 & 기르고 싶은 머리 자유롭게 가능",
-  ],
-};
 // 푸터 링크 정보를 반환하는 헬퍼 함수
 const getFooterLinks = () => [
   {
@@ -573,156 +511,4 @@ const getFooterLinks = () => [
   },
 ];
 
-const JobPostingForm = () => {
-  const [title, setTitle] = useState("제목을 입력하세요");
-  const [description, setDescription] = useState("");
-  const [benefits, setBenefits] = useState(() => {
-    // localStorage에서 저장된 데이터 불러오기
-    const savedBenefits = localStorage.getItem("jobPostingBenefits");
-    return savedBenefits ? JSON.parse(savedBenefits) : defaultBenefits;
-  });
-  const [currentBenefit, setCurrentBenefit] = useState({
-    category: "기본 복지",
-    value: "",
-  });
-
-  // benefits가 변경될 때마다 localStorage에 저장
-  useEffect(() => {
-    localStorage.setItem("jobPostingBenefits", JSON.stringify(benefits));
-  }, [benefits]);
-
-  const handleBenefitAdd = () => {
-    if (currentBenefit.value.trim()) {
-      setBenefits((prev) => ({
-        ...prev,
-        [currentBenefit.category]: [
-          ...prev[currentBenefit.category],
-          currentBenefit.value.trim(),
-        ],
-      }));
-      setCurrentBenefit((prev) => ({ ...prev, value: "" }));
-    }
-  };
-
-  const handleBenefitRemove = (category, index) => {
-    setBenefits((prev) => ({
-      ...prev,
-      [category]: prev[category].filter((_, i) => i !== index),
-    }));
-  };
-
-  // 카테고리의 모든 항목 초기화 함수
-  const handleResetCategory = (category) => {
-    setBenefits((prev) => ({
-      ...prev,
-      [category]: defaultBenefits[category],
-    }));
-  };
-
-  return (
-    <div className="flex gap-4 h-screen max-h-screen p-4 box-border fixed inset-0">
-      <div className="w-1/2 p-4 border rounded-lg overflow-auto">
-        <div className="mb-4">
-          <label className="block text-sm font-medium mb-2">채용 제목</label>
-          <input
-            type="text"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            className="w-full p-2 border rounded"
-          />
-        </div>
-
-        <div className="mb-4">
-          <label className="block text-sm font-medium mb-2">
-            채용 부문 내용
-          </label>
-          <SimpleRichTextEditor value={description} onChange={setDescription} />
-        </div>
-
-        <div className="mb-4">
-          <label className="block text-sm font-medium mb-2">복리후생</label>
-          <div className="flex gap-2 mb-2">
-            <select
-              value={currentBenefit.category}
-              onChange={(e) =>
-                setCurrentBenefit((prev) => ({
-                  ...prev,
-                  category: e.target.value,
-                }))
-              }
-              className="p-2 border rounded"
-            >
-              {Object.keys(benefits).map((category) => (
-                <option key={category} value={category}>
-                  {category}
-                </option>
-              ))}
-            </select>
-            <input
-              type="text"
-              value={currentBenefit.value}
-              onChange={(e) =>
-                setCurrentBenefit((prev) => ({
-                  ...prev,
-                  value: e.target.value,
-                }))
-              }
-              className="flex-1 p-2 border rounded"
-              placeholder="복리후생 항목 입력"
-              onKeyPress={(e) => {
-                if (e.key === "Enter") {
-                  e.preventDefault();
-                  handleBenefitAdd();
-                }
-              }}
-            />
-            <button
-              onClick={handleBenefitAdd}
-              className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700"
-            >
-              추가
-            </button>
-          </div>
-
-          <div className="space-y-4">
-            {Object.entries(benefits).map(([category, items]) => (
-              <div key={category} className="border-b pb-2">
-                <div className="flex justify-between items-center mb-2">
-                  <h3 className="font-medium">{category}</h3>
-                  <button
-                    onClick={() => handleResetCategory(category)}
-                    className="text-sm text-blue-600 hover:text-blue-800"
-                  >
-                    기본값으로 초기화
-                  </button>
-                </div>
-                <div className="flex flex-wrap gap-2">
-                  {items.map((item, index) => (
-                    <span
-                      key={index}
-                      className="inline-flex items-center px-3 py-1 rounded-full text-sm bg-gray-100"
-                    >
-                      {item}
-                      <button
-                        onClick={() => handleBenefitRemove(category, index)}
-                        className="ml-2 hover:text-red-500"
-                      >
-                        <X className="w-4 h-4" />
-                      </button>
-                    </span>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      <div className="w-1/2 p-4 border rounded-lg overflow-hidden flex flex-col">
-        <Preview title={title} description={description} benefits={benefits} />
-      </div>
-    </div>
-  );
-};
-
-export default JobPostingForm;
+export default Preview;
