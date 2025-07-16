@@ -400,7 +400,7 @@ const Preview = ({ title, description, benefits }) => {
         >
           <div className="relative w-full">
             <img
-              src="https://gw.rapigen.com/editor/userfiles/rapigen.com/ysjang/7fd470c141768aece718997afc5d03da/ysjang_bd5bd5aa8c1610d771c79a1f13962cd.png"
+              src="https://imgur.com/a/UIJvf7J"
               alt=""
               className="w-full h-auto"
               style={{ objectFit: "contain" }}
