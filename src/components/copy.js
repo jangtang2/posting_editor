@@ -163,7 +163,7 @@ const Preview = ({ title, description, benefits }) => {
       </h1>
     </div>
 
-    <img src="https://gw.rapigen.com/editor/userfiles/rapigen.com/ysjang/d311c1a92c894d387d18d7d681b297ae/ysjang_505b102fc405106b8f6b83264e22078.jpg"
+    <img src="https://i.imgur.com/chMXi0P.jpeg"
          alt=""
          style="width: 100% !important; height: auto !important; object-fit: contain !important; display: block !important; max-width: 100% !important;" />
 
@@ -171,12 +171,12 @@ const Preview = ({ title, description, benefits }) => {
       ${addTableStyles(description)}
     </div>
 
-    <img src="https://gw.rapigen.com/editor/userfiles/rapigen.com/ysjang/260681e018726aeb38ddf3a04bb53be7/ysjang_7e45263c31c5df29b8010768df479c0.jpg"
+    <img src="https://i.imgur.com/KsijpzW.jpeg"
          alt=""
          style="width: 100% !important; height: auto !important; object-fit: contain !important; display: block !important; max-width: 100% !important; margin-bottom: 10% !important;" />
 
     <div style="width: 100% !important; background-color: #cf152d !important; padding-bottom: 10% !important;">
-      <img src="https://gw.rapigen.com/editor/userfiles/rapigen.com/ysjang/568a2af3af0a1c87807089dc6a681c6b/ysjang_150057b7d11fb9397e0fd22a88ecf7b.jpg"
+      <img src="https://i.imgur.com/hk6MS8M.jpeg"
            alt=""
            style="width: 100% !important; height: auto !important; object-fit: contain !important; display: block !important; max-width: 100% !important; margin-bottom: 2% !important;" />
       <div style="width: 90% !important; background-color: #ffffff !important; border-radius: 24px !important; margin: 0 auto !important; padding: 3% 0 !important;">
@@ -216,12 +216,12 @@ const Preview = ({ title, description, benefits }) => {
       </div>
     </div>
 
-    <img src="https://gw.rapigen.com/editor/userfiles/rapigen.com/ysjang/2f92048a74054d86229a54d43ff1edf4/ysjang_292034ce62a1bdb3cda65d01f4d7c69.jpg"
+    <img src="https://i.imgur.com/jZGEXLa.jpeg"
          alt=""
          style="width: 100% !important; height: auto !important; object-fit: contain !important; display: block !important; max-width: 100% !important; margin-top: 10% !important;" />
 
     <div style="width: 100% !important; margin-bottom: 6% !important;">
-      <img src="https://gw.rapigen.com/editor/userfiles/rapigen.com/ysjang/6741eda181315f1cf66857c18cdccf24/ysjang_7aeb33ed65f9d764b977c525177e271.jpg"
+      <img src="https://i.imgur.com/7YIkYEc.jpeg"
            alt=""
            style="width: 100% !important; height: auto !important; object-fit: contain !important; display: block !important; max-width: 100% !important; margin-top: 5% !important;" />
       <div style="width: 100% !important; display: flex !important; justify-content: center !important; background-color: #ffffff !important;">
@@ -242,7 +242,7 @@ const Preview = ({ title, description, benefits }) => {
       </div>
     </div>
 
-    <img src="https://gw.rapigen.com/editor/userfiles/rapigen.com/ysjang/53cdfda7630194cd1cb12dacffc7fad9/ysjang_db06d30522c45ed059a5a1ddf278b98.jpg"
+    <img src="https://i.imgur.com/eLoh8fZ.jpeg"
          alt=""
          style="width: 100% !important; height: auto !important; object-fit: contain !important; display: block !important; max-width: 100% !important;" />
   </div>
@@ -319,7 +319,7 @@ const Preview = ({ title, description, benefits }) => {
         </div>
 
         <img
-          src="https://gw.rapigen.com/editor/userfiles/rapigen.com/ysjang/d311c1a92c894d387d18d7d681b297ae/ysjang_505b102fc405106b8f6b83264e22078.jpg"
+          src="https://i.imgur.com/chMXi0P.jpeg"
           alt=""
           className="w-full h-auto"
           style={{ objectFit: "contain" }}
@@ -336,7 +336,7 @@ const Preview = ({ title, description, benefits }) => {
         </div>
 
         <img
-          src="https://gw.rapigen.com/editor/userfiles/rapigen.com/ysjang/260681e018726aeb38ddf3a04bb53be7/ysjang_7e45263c31c5df29b8010768df479c0.jpg"
+          src="https://i.imgur.com/KsijpzW.jpeg"
           alt=""
           className="w-full h-auto mb-[10%]"
           style={{ objectFit: "contain" }}
@@ -344,7 +344,7 @@ const Preview = ({ title, description, benefits }) => {
 
         <div className="w-full bg-[#cf152d] pb-[10%]">
           <img
-            src="https://gw.rapigen.com/editor/userfiles/rapigen.com/ysjang/568a2af3af0a1c87807089dc6a681c6b/ysjang_150057b7d11fb9397e0fd22a88ecf7b.jpg"
+            src="https://i.imgur.com/hk6MS8M.jpeg"
             alt=""
             className="w-full h-auto mb-[2%]"
             style={{ objectFit: "contain" }}
@@ -398,7 +398,7 @@ const Preview = ({ title, description, benefits }) => {
         </div>
 
         <img
-          src="https://gw.rapigen.com/editor/userfiles/rapigen.com/ysjang/2f92048a74054d86229a54d43ff1edf4/ysjang_292034ce62a1bdb3cda65d01f4d7c69.jpg"
+          src="https://i.imgur.com/jZGEXLa.jpeg"
           alt=""
           className="w-full h-auto mt-[10%]"
           style={{ objectFit: "contain" }}
@@ -406,7 +406,7 @@ const Preview = ({ title, description, benefits }) => {
 
         <div className="w-full mb-[6%]">
           <img
-            src="https://gw.rapigen.com/editor/userfiles/rapigen.com/ysjang/6741eda181315f1cf66857c18cdccf24/ysjang_7aeb33ed65f9d764b977c525177e271.jpg"
+            src="https://i.imgur.com/7YIkYEc.jpeg"
             alt=""
             className="w-full h-auto mt-[5%]"
             style={{ objectFit: "contain" }}
@@ -433,7 +433,7 @@ const Preview = ({ title, description, benefits }) => {
         </div>
 
         <img
-          src="https://gw.rapigen.com/editor/userfiles/rapigen.com/ysjang/53cdfda7630194cd1cb12dacffc7fad9/ysjang_db06d30522c45ed059a5a1ddf278b98.jpg"
+          src="https://i.imgur.com/eLoh8fZ.jpeg"
           alt=""
           className="w-full h-auto"
           style={{ objectFit: "contain" }}
@@ -446,20 +446,13 @@ const Preview = ({ title, description, benefits }) => {
 // 카테고리별 아이콘 URL을 반환하는 헬퍼 함수
 const getCategoryIcon = (category) => {
   const icons = {
-    "기본 복지":
-      "https://gw.rapigen.com/editor/userfiles/rapigen.com/ysjang/9bc3bf7dfa93812f1494fdbe9628fbeb/ysjang_1d7d5b7e992648335bcfe55c0fa2a49.jpg",
-    지원제도:
-      "https://gw.rapigen.com/editor/userfiles/rapigen.com/ysjang/5b0bd4b6049cc793a76b54a1b78d86e4/ysjang_22bc14c4f56363436b8748cf01d75ca.jpg",
-    리프레시:
-      "https://gw.rapigen.com/editor/userfiles/rapigen.com/ysjang/8991c4392308ef36834537de471a595f/ysjang_ab2f6f80a6657ae17b1a7a18b26a640.jpg",
-    "식사 및 간식":
-      "https://gw.rapigen.com/editor/userfiles/rapigen.com/ysjang/372369272faf2c398f7eaa1f01e7bde1/ysjang_8e229e31aee1ebfc18e6fa99e2ebbbe.jpg",
-    "숙소/여행":
-      "https://gw.rapigen.com/editor/userfiles/rapigen.com/ysjang/363bec799a1f2ddfbac3b8fd91f70f5a/ysjang_346edad3d0b904fbf6145c31511f009.jpg",
-    "교육/행사":
-      "https://gw.rapigen.com/editor/userfiles/rapigen.com/ysjang/611f57bc34145d31759dce6022690427/ysjang_0889f99a530f2706e4c3e0dba0022ce.jpg",
-    근무환경:
-      "https://gw.rapigen.com/editor/userfiles/rapigen.com/ysjang/88dc0b12565ba6147081e4d15fa6da02/ysjang_b75ec5ec470ae62b8e0876ee88d3355.jpg",
+    "기본 복지": "https://i.imgur.com/w1N8ciu.jpeg",
+    지원제도: "https://i.imgur.com/toTe870.jpeg",
+    리프레시: "https://i.imgur.com/vuPqdSv.jpeg",
+    "식사 및 간식": "https://i.imgur.com/l9p6Zba.jpeg",
+    "숙소/여행": "https://i.imgur.com/cixmPpy.jpeg",
+    "교육/행사": "https://i.imgur.com/L5vLXI7.jpeg",
+    근무환경: "https://i.imgur.com/NMAvYTE.jpeg",
   };
   return icons[category];
 };
@@ -526,20 +519,17 @@ const getFooterLinks = () => [
   {
     href: "https://www.rapigen-inc.com/main/?skin=sub1_1.html",
     title: "래피젠 기업소개 보러가기",
-    imgSrc:
-      "https://gw.rapigen.com/editor/userfiles/rapigen.com/ysjang/98b24b8185dd573bfc11828e806d929f/ysjang_0761ac10d6a91a086fbabdf9ea1d826.jpg",
+    imgSrc: "https://i.imgur.com/t9RNAOJ.jpeg",
   },
   {
     href: "https://www.rapigen-inc.com/modules/board/bd_list.html?id=news",
     title: "래피젠 회사소식 보러가기",
-    imgSrc:
-      "https://gw.rapigen.com/editor/userfiles/rapigen.com/ysjang/652ed7982a9c1040414fe5d083e09c13/ysjang_299079d95117c65a25996dd2f80098f.jpg",
+    imgSrc: "https://i.imgur.com/YZAbeLV.jpeg",
   },
   {
     href: "https://www.rapigen-inc.com/modules/board/bd_list.html?id=careers",
     title: "래피젠 채용공고 보러가기",
-    imgSrc:
-      "https://gw.rapigen.com/editor/userfiles/rapigen.com/ysjang/810ccdb964d5af66fe5841b94278e743/ysjang_e9403a9f7ea8b8add57873c52b78632.jpg",
+    imgSrc: "https://i.imgur.com/Y5rwoYn.jpeg",
   },
 ];
 
