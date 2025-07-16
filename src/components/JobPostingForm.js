@@ -91,7 +91,7 @@ const SimpleRichTextEditor = ({ value, onChange }) => {
   );
 };
 
-const Preview = ({ title, description, benefits }) => {
+const Preview = ({ title, description, benefits, isRapigenHealthcare }) => {
   const previewRef = useRef(null);
   const [isCapturing, setIsCapturing] = useState(false);
 
@@ -169,6 +169,10 @@ const Preview = ({ title, description, benefits }) => {
   };
 
   const copyHtmlToClipboard = () => {
+    // 회사 선택에 따른 이미지 URL 결정
+    const bottomImageUrl = isRapigenHealthcare
+      ? "https://i.imgur.com/LI8GTic.jpeg"
+      : "https://i.imgur.com/jZGEXLa.jpeg";
     // HTML 템플릿 생성
     const htmlContent = `
   <div style="background-color: #ffffff !important; width: 100% !important; max-width: 100% !important; margin: 0 auto !important; font-family: system-ui, -apple-system, sans-serif !important;">
@@ -234,9 +238,9 @@ const Preview = ({ title, description, benefits }) => {
       </div>
     </div>
 
-    <img src="https://i.imgur.com/jZGEXLa.jpeg"
-         alt=""
-         style="width: 100% !important; height: auto !important; object-fit: contain !important; display: block !important; max-width: 100% !important; margin-top: 10% !important;" />
+    <img src="${bottomImageUrl}"
+     alt=""
+     style="width: 100% !important; height: auto !important; object-fit: contain !important; display: block !important; max-width: 100% !important; margin-top: 10% !important;" />
 
     <div style="width: 100% !important; margin-bottom: 6% !important;">
       <img src="https://i.imgur.com/7YIkYEc.jpeg"
@@ -507,7 +511,11 @@ const Preview = ({ title, description, benefits }) => {
           </div>
 
           <img
-            src="https://i.imgur.com/jZGEXLa.jpeg"
+            src={
+              isRapigenHealthcare
+                ? "https://i.imgur.com/LI8GTic.jpeg"
+                : "https://i.imgur.com/jZGEXLa.jpeg"
+            }
             alt=""
             className="w-full h-auto mt-[10%]"
             style={{ objectFit: "contain" }}
@@ -650,6 +658,7 @@ const defaultBenefits = {
 
 const JobPostingForm = () => {
   const [title, setTitle] = useState("제목을 입력하세요");
+  const [isRapigenHealthcare, setIsRapigenHealthcare] = useState(false);
   const [description, setDescription] = useState("");
   const [benefits, setBenefits] = useState(() => {
     // localStorage에서 저장된 데이터 불러오기
@@ -697,6 +706,17 @@ const JobPostingForm = () => {
   return (
     <div className="flex gap-4 h-screen max-h-screen p-4 box-border fixed inset-0">
       <div className="w-1/2 p-4 border rounded-lg overflow-auto">
+        <div className="mb-4">
+          <label className="flex items-center gap-2 text-sm font-medium mb-2">
+            <input
+              type="checkbox"
+              checked={isRapigenHealthcare}
+              onChange={(e) => setIsRapigenHealthcare(e.target.checked)}
+              className="w-4 h-4"
+            />
+            래피젠 헬스케어
+          </label>
+        </div>
         <div className="mb-4">
           <label className="block text-sm font-medium mb-2">채용 제목</label>
           <input
@@ -794,7 +814,12 @@ const JobPostingForm = () => {
       </div>
 
       <div className="w-1/2 p-4 border rounded-lg overflow-hidden flex flex-col">
-        <Preview title={title} description={description} benefits={benefits} />
+        <Preview
+          title={title}
+          description={description}
+          benefits={benefits}
+          isRapigenHealthcare={isRapigenHealthcare}
+        />
       </div>
     </div>
   );
