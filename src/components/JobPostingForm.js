@@ -411,7 +411,14 @@ const Preview = ({ title, description, benefits, isRapigenHealthcare }) => {
               crossOrigin="anonymous"
             />
             <h1 className="absolute z-10 bottom-[22%] left-[8%] text-white">
-              <span style={{ fontSize: "calc(100% + 2vmin)" }}>{title}</span>
+              <span
+                style={{
+                  fontSize: "calc(100% + 1vmin)",
+                  whiteSpace: "pre-line",
+                }}
+              >
+                {title}
+              </span>
             </h1>
           </div>
 
@@ -719,11 +726,12 @@ const JobPostingForm = () => {
         </div>
         <div className="mb-4">
           <label className="block text-sm font-medium mb-2">채용 제목</label>
-          <input
-            type="text"
+          <textarea
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            className="w-full p-2 border rounded"
+            className="w-full p-2 border rounded resize-none"
+            rows={2}
+            placeholder="제목을 입력하세요 (줄바꿈 가능)"
           />
         </div>
 
