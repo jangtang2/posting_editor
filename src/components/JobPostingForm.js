@@ -316,6 +316,51 @@ const Preview = ({ title, description, benefits, isRapigenHealthcare }) => {
     }
   };
 
+  // 잡코리아용 HTML 표만 복사하는 함수
+  const copyJobKoreaHtml = () => {
+    const tableHtml = `
+  <div style="width: 100% !important; height: fit-content !important; margin-top: 2% !important; margin-bottom: 7% !important; display: block !important; justify-content: center !important;">
+    <figure class="table" style="width: 80% !important; margin: 0 auto !important;">
+      <table style="border-collapse: collapse !important; border: 1px solid #A59D84 !important; width: 100% !important; table-layout: fixed !important;">
+        <tbody>
+          <tr style="background-color: #f9fafb !important; text-align: center !important;">
+            <td style="border: 1px solid #e5e7eb !important; padding: 8px !important; text-align: center !important; word-break: keep-all !important; overflow-wrap: break-word !important; font-size: clamp(0.9rem, 1vw, 1rem) !important; line-height: clamp(1.25rem, 1.5vw, 1.5rem) !important; width: 25%;"><strong>모집부문</strong></td>
+            <td style="border: 1px solid #e5e7eb !important; padding: 8px !important; text-align: center !important; word-break: keep-all !important; overflow-wrap: break-word !important; font-size: clamp(0.9rem, 1vw, 1rem) !important; line-height: clamp(1.25rem, 1.5vw, 1.5rem) !important; width: 20%;"><strong>구분</strong></td>
+            <td style="border: 1px solid #e5e7eb !important; padding: 8px !important; text-align: center !important; word-break: keep-all !important; overflow-wrap: break-word !important; font-size: clamp(0.9rem, 1vw, 1rem) !important; line-height: clamp(1.25rem, 1.5vw, 1.5rem) !important; width: 55%;"><strong>상세요강</strong></td>
+          </tr>
+          <tr>
+            <td style="border: 1px solid #e5e7eb !important; padding: 8px !important; text-align: center !important;" rowspan="3">&nbsp;</td>
+            <td style="border: 1px solid #e5e7eb !important; padding: 8px !important; text-align: center !important;">담당 업무</td>
+            <td style="border: 1px solid #e5e7eb !important; padding: 8px !important; text-align: left !important;">&nbsp;</td>
+          </tr>
+          <tr>
+            <td style="border: 1px solid #e5e7eb !important; padding: 8px !important; text-align: center !important;">필수 자격</td>
+            <td style="border: 1px solid #e5e7eb !important; padding: 8px !important; text-align: left !important;">&nbsp;</td>
+          </tr>
+          <tr>
+            <td style="border: 1px solid #e5e7eb !important; padding: 8px !important; text-align: center !important;">우대 사항</td>
+            <td style="border: 1px solid #e5e7eb !important; padding: 8px !important; text-align: left !important;">&nbsp;</td>
+          </tr>
+        </tbody>
+      </table>
+    </figure>
+  </div>
+  `.trim();
+
+    // 클립보드에 복사
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard
+        .writeText(tableHtml)
+        .then(() => alert("잡코리아용 HTML이 클립보드에 복사되었습니다!"))
+        .catch((err) => {
+          console.error("Clipboard API 실패, fallback 사용:", err);
+          fallbackCopyTextToClipboard(tableHtml);
+        });
+    } else {
+      fallbackCopyTextToClipboard(tableHtml);
+    }
+  };
+
   // 이미지로 저장하는 함수
   const saveAsImage = async () => {
     if (!previewRef.current) return;
@@ -374,6 +419,12 @@ const Preview = ({ title, description, benefits, isRapigenHealthcare }) => {
           className="w-full px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors"
         >
           HTML 복사하기
+        </button>
+        <button
+          onClick={copyJobKoreaHtml}
+          className="w-full px-4 py-2 bg-purple-600 text-white rounded hover:bg-purple-700 transition-colors"
+        >
+          HTML 복사하기 (잡코리아)
         </button>
 
         <button
