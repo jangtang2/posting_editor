@@ -95,6 +95,35 @@ const Preview = ({ title, description, benefits, isRapigenHealthcare }) => {
   const previewRef = useRef(null);
   const [isCapturing, setIsCapturing] = useState(false);
 
+  const fallbackCopyTextToClipboard = (text) => {
+    const textArea = document.createElement("textarea");
+    textArea.value = text;
+    textArea.style.position = "fixed";
+    textArea.style.top = "0";
+    textArea.style.left = "0";
+    textArea.style.width = "2em";
+    textArea.style.height = "2em";
+    textArea.style.padding = "0";
+    textArea.style.border = "none";
+    textArea.style.outline = "none";
+    textArea.style.boxShadow = "none";
+    textArea.style.background = "transparent";
+
+    document.body.appendChild(textArea);
+    textArea.focus();
+    textArea.select();
+
+    try {
+      document.execCommand("copy");
+      alert("HTML이 클립보드에 복사되었습니다!");
+    } catch (err) {
+      console.error("클립보드 복사 실패:", err);
+      alert("클립보드 복사에 실패했습니다.");
+    }
+
+    document.body.removeChild(textArea);
+  };
+
   // 표에 스타일을 적용하는 함수
   const addTableStyles = (html) => {
     if (!html) return "";
@@ -271,37 +300,6 @@ const Preview = ({ title, description, benefits, isRapigenHealthcare }) => {
          style="width: 100% !important; height: auto !important; object-fit: contain !important; display: block !important; max-width: 100% !important;" />
   </div>
 `.trim();
-    // Fallback 복사 함수
-    const fallbackCopyTextToClipboard = (text) => {
-      const textArea = document.createElement("textarea");
-      textArea.value = text;
-
-      // 화면 밖으로 텍스트영역 이동
-      textArea.style.position = "fixed";
-      textArea.style.top = "0";
-      textArea.style.left = "0";
-      textArea.style.width = "2em";
-      textArea.style.height = "2em";
-      textArea.style.padding = "0";
-      textArea.style.border = "none";
-      textArea.style.outline = "none";
-      textArea.style.boxShadow = "none";
-      textArea.style.background = "transparent";
-
-      document.body.appendChild(textArea);
-      textArea.focus();
-      textArea.select();
-
-      try {
-        document.execCommand("copy");
-        alert("HTML이 클립보드에 복사되었습니다!");
-      } catch (err) {
-        console.error("클립보드 복사 실패:", err);
-        alert("클립보드 복사에 실패했습니다.");
-      }
-
-      document.body.removeChild(textArea);
-    };
 
     if (navigator.clipboard && window.isSecureContext) {
       navigator.clipboard
