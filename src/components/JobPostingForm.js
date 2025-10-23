@@ -214,7 +214,7 @@ const Preview = ({ title, description, benefits, isRapigenHealthcare, descriptio
            alt=""
            style="width: 100% !important; height: auto !important; object-fit: contain !important; display: block !important; max-width: 100% !important;" />
       <h1 style="color: #ffffff !important; position: absolute !important; z-index: 5 !important; bottom: 22% !important; left: 8% !important; margin: 0 !important;">
-        <span style="font-size: calc(100% + 2.5vmin) !important;">${formattedTitle}</span>
+        <span style="font-size: calc(100% + 2.5vmin) !important; line-height: calc(100% + 3.5vmin) !important;">${formattedTitle}</span>
       </h1>
     </div>
 
@@ -333,7 +333,7 @@ const Preview = ({ title, description, benefits, isRapigenHealthcare, descriptio
            alt=""
            style="width: 100% !important; height: auto !important; object-fit: contain !important; display: block !important; max-width: 100% !important;" />
       <h1 style="color: #ffffff !important; position: absolute !important; z-index: 5 !important; bottom: 22% !important; left: 8% !important; margin: 0 !important;">
-        <span style="font-size: calc(100% + 2.5vmin) !important;">${formattedTitle}</span>
+        <span style="font-size: calc(100% + 2.5vmin) !important; line-height: calc(100% + 3.5vmin) !important;">${formattedTitle}</span>
       </h1>
     </div>
 
