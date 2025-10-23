@@ -91,7 +91,7 @@ const SimpleRichTextEditor = ({ value, onChange }) => {
   );
 };
 
-const Preview = ({ title, description, benefits, isRapigenHealthcare }) => {
+const Preview = ({ title, description, benefits, isRapigenHealthcare, descriptionFontSize }) => {
   const previewRef = useRef(null);
   const [isCapturing, setIsCapturing] = useState(false);
 
@@ -125,7 +125,7 @@ const Preview = ({ title, description, benefits, isRapigenHealthcare }) => {
   };
 
   // 표에 스타일을 적용하는 함수
-  const addTableStyles = (html) => {
+  const addTableStyles = (html, fontSize = 16) => {
     if (!html) return "";
 
     // figure 태그 스타일 추가
@@ -142,7 +142,7 @@ const Preview = ({ title, description, benefits, isRapigenHealthcare }) => {
       )
       .replace(
         /<td/g,
-        '<td style="border: 1px solid #e5e7eb !important; padding: 8px !important; text-align: center !important; word-break: keep-all !important; word-wrap: break-word !important; font-size: clamp(0.9rem, 1vw, 1rem) !important; line-height: clamp(1.25rem, 1.5vw, 1.5rem) !important;"'
+        `<td style="border: 1px solid #e5e7eb !important; padding: 8px !important; text-align: center !important; word-break: keep-all !important; word-wrap: break-word !important; font-size: ${fontSize}px !important; line-height: ${fontSize * 1.5}px !important;"`
       );
 
     // tbody의 첫 번째 tr 찾기 (헤더 행)
@@ -202,6 +202,10 @@ const Preview = ({ title, description, benefits, isRapigenHealthcare }) => {
     const bottomImageUrl = isRapigenHealthcare
       ? "https://i.imgur.com/LI8GTic.jpeg"
       : "https://i.imgur.com/jZGEXLa.jpeg";
+
+    // 제목의 줄바꿈 문자를 <br> 태그로 변환
+    const formattedTitle = title.replace(/\n/g, '<br>');
+
     // HTML 템플릿 생성
     const htmlContent = `
   <div style="background-color: #ffffff !important; width: 100% !important; max-width: 100% !important; margin: 0 auto !important; font-family: system-ui, -apple-system, sans-serif !important;">
@@ -210,7 +214,7 @@ const Preview = ({ title, description, benefits, isRapigenHealthcare }) => {
            alt=""
            style="width: 100% !important; height: auto !important; object-fit: contain !important; display: block !important; max-width: 100% !important;" />
       <h1 style="color: #ffffff !important; position: absolute !important; z-index: 5 !important; bottom: 22% !important; left: 8% !important; margin: 0 !important;">
-        <span style="font-size: calc(100% + 2.5vmin) !important;">${title}</span>
+        <span style="font-size: calc(100% + 2.5vmin) !important;">${formattedTitle}</span>
       </h1>
     </div>
 
@@ -219,7 +223,7 @@ const Preview = ({ title, description, benefits, isRapigenHealthcare }) => {
          style="width: 100% !important; height: auto !important; object-fit: contain !important; display: block !important; max-width: 100% !important;" />
 
     <div style="width: 100% !important; height: fit-content !important; margin-top: 2% !important; margin-bottom: 7% !important; display: block !important; justify-content: center !important;">
-      ${addTableStyles(description)}
+      ${addTableStyles(description, descriptionFontSize)}
     </div>
 
     <img src="https://i.imgur.com/KsijpzW.jpeg"
@@ -319,6 +323,9 @@ const Preview = ({ title, description, benefits, isRapigenHealthcare }) => {
       ? "https://i.imgur.com/LI8GTic.jpeg"
       : "https://i.imgur.com/jZGEXLa.jpeg";
 
+    // 제목의 줄바꿈 문자를 <br> 태그로 변환
+    const formattedTitle = title.replace(/\n/g, '<br>');
+
     const htmlContent = `
   <div style="background-color: #ffffff !important; width: 100% !important; max-width: 100% !important; margin: 0 auto !important; font-family: system-ui, -apple-system, sans-serif !important;">
     <div style="position: relative !important; width: 100% !important;">
@@ -326,7 +333,7 @@ const Preview = ({ title, description, benefits, isRapigenHealthcare }) => {
            alt=""
            style="width: 100% !important; height: auto !important; object-fit: contain !important; display: block !important; max-width: 100% !important;" />
       <h1 style="color: #ffffff !important; position: absolute !important; z-index: 5 !important; bottom: 22% !important; left: 8% !important; margin: 0 !important;">
-        <span style="font-size: calc(100% + 2.5vmin) !important;">${title}</span>
+        <span style="font-size: calc(100% + 2.5vmin) !important;">${formattedTitle}</span>
       </h1>
     </div>
 
@@ -335,7 +342,7 @@ const Preview = ({ title, description, benefits, isRapigenHealthcare }) => {
          style="width: 100% !important; height: auto !important; object-fit: contain !important; display: block !important; max-width: 100% !important;" />
 
     <div style="width: 100% !important; height: fit-content !important; margin-top: 2% !important; margin-bottom: 7% !important; display: block !important; justify-content: center !important;">
-      ${addJobKoreaTableStyles(description)}
+      ${addJobKoreaTableStyles(description, descriptionFontSize)}
     </div>
 
     <img src="https://i.imgur.com/KsijpzW.jpeg"
@@ -430,11 +437,19 @@ const Preview = ({ title, description, benefits, isRapigenHealthcare }) => {
     }
   };
 
-  const addJobKoreaTableStyles = (html) => {
+  const addJobKoreaTableStyles = (html, fontSize = 16) => {
+    if (!html) return "";
+
+    // HTML을 파싱하여 모든 td 태그에 폰트 사이즈 적용
+    let styledHtml = html.replace(
+      /<td([^>]*)>/g,
+      `<td$1 style="font-size: ${fontSize}px !important; line-height: ${fontSize * 1.5}px !important;">`
+    );
+
     return `
   <div style="width: 100% !important; height: fit-content !important; margin-top: 2% !important; margin-bottom: 7% !important; display: block !important; justify-content: center !important;">
     <figure class="table" style="width: 80% !important; margin: 0 auto !important;">
-      ${html}
+      ${styledHtml}
     </figure>
   </div>
   `.trim();
@@ -499,12 +514,12 @@ const Preview = ({ title, description, benefits, isRapigenHealthcare }) => {
         >
           HTML 복사하기
         </button>
-        <button
+        {/* <button
           onClick={copyJobKoreaHtml}
           className="w-full px-4 py-2 bg-purple-600 text-white rounded hover:bg-purple-700 transition-colors"
         >
           HTML 복사하기 (잡코리아)
-        </button>
+        </button> */}
 
         <button
           onClick={saveAsImage}
@@ -570,7 +585,7 @@ const Preview = ({ title, description, benefits, isRapigenHealthcare }) => {
           >
             <div
               style={{ width: "100%" }}
-              dangerouslySetInnerHTML={{ __html: addTableStyles(description) }}
+              dangerouslySetInnerHTML={{ __html: addTableStyles(description, descriptionFontSize) }}
             />
           </div>
 
@@ -797,6 +812,7 @@ const JobPostingForm = () => {
   const [title, setTitle] = useState("제목을 입력하세요");
   const [isRapigenHealthcare, setIsRapigenHealthcare] = useState(false);
   const [description, setDescription] = useState("");
+  const [descriptionFontSize, setDescriptionFontSize] = useState(16);
   const [benefits, setBenefits] = useState(() => {
     // localStorage에서 저장된 데이터 불러오기
     const savedBenefits = localStorage.getItem("jobPostingBenefits");
@@ -866,9 +882,23 @@ const JobPostingForm = () => {
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm font-medium mb-2">
-            채용 부문 내용
-          </label>
+          <div className="flex items-center justify-between mb-2">
+            <label className="text-sm font-medium">
+              채용 부문 내용
+            </label>
+            <div className="flex items-center gap-2">
+              <label className="text-sm font-medium">폰트 사이즈:</label>
+              <input
+                type="number"
+                value={descriptionFontSize}
+                onChange={(e) => setDescriptionFontSize(Number(e.target.value))}
+                min="10"
+                max="30"
+                className="w-16 p-1 border rounded text-center"
+              />
+              <span className="text-sm text-gray-500">px</span>
+            </div>
+          </div>
           <SimpleRichTextEditor value={description} onChange={setDescription} />
         </div>
 
@@ -957,6 +987,7 @@ const JobPostingForm = () => {
           description={description}
           benefits={benefits}
           isRapigenHealthcare={isRapigenHealthcare}
+          descriptionFontSize={descriptionFontSize}
         />
       </div>
     </div>
