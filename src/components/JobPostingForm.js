@@ -91,7 +91,13 @@ const SimpleRichTextEditor = ({ value, onChange }) => {
   );
 };
 
-const Preview = ({ title, description, benefits, isRapigenHealthcare, descriptionFontSize }) => {
+const Preview = ({
+  title,
+  description,
+  benefits,
+  isRapigenHealthcare,
+  descriptionFontSize,
+}) => {
   const previewRef = useRef(null);
   const [isCapturing, setIsCapturing] = useState(false);
 
@@ -142,7 +148,9 @@ const Preview = ({ title, description, benefits, isRapigenHealthcare, descriptio
       )
       .replace(
         /<td/g,
-        `<td style="border: 1px solid #e5e7eb !important; padding: 8px !important; text-align: center !important; word-break: keep-all !important; word-wrap: break-word !important; font-size: ${fontSize}px !important; line-height: ${fontSize * 1.5}px !important;"`
+        `<td style="border: 1px solid #e5e7eb !important; padding: 8px !important; text-align: center !important; word-break: keep-all !important; word-wrap: break-word !important; font-size: ${fontSize}px !important; line-height: ${
+          fontSize * 1.5
+        }px !important;"`
       );
 
     // tbody의 첫 번째 tr 찾기 (헤더 행)
@@ -204,13 +212,13 @@ const Preview = ({ title, description, benefits, isRapigenHealthcare, descriptio
       : "https://i.imgur.com/jZGEXLa.jpeg";
 
     // 제목의 줄바꿈 문자를 <br> 태그로 변환
-    const formattedTitle = title.replace(/\n/g, '<br>');
+    const formattedTitle = title.replace(/\n/g, "<br>");
 
     // HTML 템플릿 생성
     const htmlContent = `
   <div style="background-color: #ffffff !important; width: 100% !important; max-width: 100% !important; margin: 0 auto !important; font-family: system-ui, -apple-system, sans-serif !important;">
     <div style="position: relative !important; width: 100% !important;">
-      <img src="https://i.imgur.com/PsqtcKD.png"
+      <img src="https://i.imgur.com/uKwfVc2.png"
            alt=""
            style="width: 100% !important; height: auto !important; object-fit: contain !important; display: block !important; max-width: 100% !important;" />
       <h1 style="color: #ffffff !important; position: absolute !important; z-index: 5 !important; bottom: 22% !important; left: 8% !important; margin: 0 !important;">
@@ -324,12 +332,12 @@ const Preview = ({ title, description, benefits, isRapigenHealthcare, descriptio
       : "https://i.imgur.com/jZGEXLa.jpeg";
 
     // 제목의 줄바꿈 문자를 <br> 태그로 변환
-    const formattedTitle = title.replace(/\n/g, '<br>');
+    const formattedTitle = title.replace(/\n/g, "<br>");
 
     const htmlContent = `
   <div style="background-color: #ffffff !important; width: 100% !important; max-width: 100% !important; margin: 0 auto !important; font-family: system-ui, -apple-system, sans-serif !important;">
     <div style="position: relative !important; width: 100% !important;">
-      <img src="https://i.imgur.com/PsqtcKD.png"
+      <img src="https://i.imgur.com/uKwfVc2.png"
            alt=""
            style="width: 100% !important; height: auto !important; object-fit: contain !important; display: block !important; max-width: 100% !important;" />
       <h1 style="color: #ffffff !important; position: absolute !important; z-index: 5 !important; bottom: 22% !important; left: 8% !important; margin: 0 !important;">
@@ -443,7 +451,9 @@ const Preview = ({ title, description, benefits, isRapigenHealthcare, descriptio
     // HTML을 파싱하여 모든 td 태그에 폰트 사이즈 적용
     let styledHtml = html.replace(
       /<td([^>]*)>/g,
-      `<td$1 style="font-size: ${fontSize}px !important; line-height: ${fontSize * 1.5}px !important;">`
+      `<td$1 style="font-size: ${fontSize}px !important; line-height: ${
+        fontSize * 1.5
+      }px !important;">`
     );
 
     return `
@@ -549,7 +559,7 @@ const Preview = ({ title, description, benefits, isRapigenHealthcare, descriptio
         >
           <div className="relative w-full">
             <img
-              src="https://i.imgur.com/PsqtcKD.png"
+              src="https://i.imgur.com/uKwfVc2.png"
               alt=""
               className="w-full h-auto"
               style={{ objectFit: "contain" }}
@@ -585,7 +595,9 @@ const Preview = ({ title, description, benefits, isRapigenHealthcare, descriptio
           >
             <div
               style={{ width: "100%" }}
-              dangerouslySetInnerHTML={{ __html: addTableStyles(description, descriptionFontSize) }}
+              dangerouslySetInnerHTML={{
+                __html: addTableStyles(description, descriptionFontSize),
+              }}
             />
           </div>
 
@@ -883,9 +895,7 @@ const JobPostingForm = () => {
 
         <div className="mb-4">
           <div className="flex items-center justify-between mb-2">
-            <label className="text-sm font-medium">
-              채용 부문 내용
-            </label>
+            <label className="text-sm font-medium">채용 부문 내용</label>
             <div className="flex items-center gap-2">
               <label className="text-sm font-medium">폰트 사이즈:</label>
               <input
