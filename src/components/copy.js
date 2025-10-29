@@ -158,7 +158,7 @@ const Preview = ({ title, description, benefits }) => {
       <img src="https://i.imgur.com/PsqtcKD.png"
            alt=""
            style="width: 100% !important; height: auto !important; object-fit: contain !important; display: block !important; max-width: 100% !important;" />
-      <h1 style="color: #ffffff !important; position: absolute !important; z-index: 5 !important; bottom: 22% !important; left: 8% !important; margin: 0 !important; font-size: calc(100% + 2vmin) !important;">
+      <h1 style="color: #000000 !important; position: absolute !important; z-index: 5 !important; bottom: 22% !important; left: 8% !important; margin: 0 !important; font-size: calc(100% + 2vmin) !important;">
         ${title}
       </h1>
     </div>
@@ -313,7 +313,7 @@ const Preview = ({ title, description, benefits }) => {
             className="w-full h-auto"
             style={{ objectFit: "contain" }}
           />
-          <h1 className="absolute z-10 bottom-[22%] left-[8%] text-white">
+          <h1 className="absolute z-10 bottom-[22%] left-[8%] text-black">
             <span style={{ fontSize: "calc(100% + 2vmin)" }}>{title}</span>
           </h1>
         </div>
