@@ -222,7 +222,7 @@ const Preview = ({
       <img src="https://i.imgur.com/x8vvJ5u.png"
            alt=""
            style="width: 100% !important; height: auto !important; object-fit: contain !important; display: block !important; max-width: 100% !important;" />
-      <h1 style="color: #000000 !important; position: absolute !important; z-index: 5 !important; bottom: 22% !important; left: 8% !important; margin: 0 !important;">
+      <h1 style="color: #000000 !important; position: absolute !important; z-index: 5 !important; bottom: 12% !important; left: 8% !important; margin: 0 !important;">
         <span style="font-size: calc(100% + 2.5vmin) !important; line-height: calc(100% + 3.5vmin) !important;">${formattedTitle}</span>
       </h1>
     </div>
@@ -565,7 +565,7 @@ const Preview = ({
               style={{ objectFit: "contain" }}
               crossOrigin="anonymous"
             />
-            <h1 className="absolute z-10 bottom-[22%] left-[8%] text-black">
+            <h1 className="absolute z-10 bottom-[12%] left-[8%] text-black">
               <span
                 style={{
                   fontSize: "calc(100% + 1vmin)",
