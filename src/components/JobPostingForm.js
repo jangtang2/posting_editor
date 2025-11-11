@@ -36,6 +36,7 @@ const SimpleRichTextEditor = ({ value, onChange }) => {
     if (!value) {
       onChange(defaultTable);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const editorConfiguration = {
@@ -326,144 +327,144 @@ const Preview = ({
     }
   };
 
-  const copyJobKoreaHtml = () => {
-    const bottomImageUrl = isRapigenHealthcare
-      ? "https://i.imgur.com/LI8GTic.jpeg"
-      : "https://i.imgur.com/jZGEXLa.jpeg";
+  // const copyJobKoreaHtml = () => {
+  //   const bottomImageUrl = isRapigenHealthcare
+  //     ? "https://i.imgur.com/LI8GTic.jpeg"
+  //     : "https://i.imgur.com/jZGEXLa.jpeg";
 
-    // 제목의 줄바꿈 문자를 <br> 태그로 변환
-    const formattedTitle = title.replace(/\n/g, "<br>");
+  //   // 제목의 줄바꿈 문자를 <br> 태그로 변환
+  //   const formattedTitle = title.replace(/\n/g, "<br>");
 
-    const htmlContent = `
-  <div style="background-color: #ffffff !important; width: 100% !important; max-width: 100% !important; margin: 0 auto !important; font-family: system-ui, -apple-system, sans-serif !important;">
-    <div style="position: relative !important; width: 100% !important;">
-      <img src="https://i.imgur.com/x8vvJ5u.png"
-           alt=""
-           style="width: 100% !important; height: auto !important; object-fit: contain !important; display: block !important; max-width: 100% !important;" />
-      <h1 style="color: #000000 !important; position: absolute !important; z-index: 5 !important; bottom: 22% !important; left: 8% !important; margin: 0 !important;">
-        <span style="font-size: calc(100% + 2.5vmin) !important; line-height: calc(100% + 3.5vmin) !important;">${formattedTitle}</span>
-      </h1>
-    </div>
+  //   const htmlContent = `
+  // <div style="background-color: #ffffff !important; width: 100% !important; max-width: 100% !important; margin: 0 auto !important; font-family: system-ui, -apple-system, sans-serif !important;">
+  //   <div style="position: relative !important; width: 100% !important;">
+  //     <img src="https://i.imgur.com/x8vvJ5u.png"
+  //          alt=""
+  //          style="width: 100% !important; height: auto !important; object-fit: contain !important; display: block !important; max-width: 100% !important;" />
+  //     <h1 style="color: #000000 !important; position: absolute !important; z-index: 5 !important; bottom: 22% !important; left: 8% !important; margin: 0 !important;">
+  //       <span style="font-size: calc(100% + 2.5vmin) !important; line-height: calc(100% + 3.5vmin) !important;">${formattedTitle}</span>
+  //     </h1>
+  //   </div>
 
-    <img src="https://i.imgur.com/chMXi0P.jpeg"
-         alt=""
-         style="width: 100% !important; height: auto !important; object-fit: contain !important; display: block !important; max-width: 100% !important;" />
+  //   <img src="https://i.imgur.com/chMXi0P.jpeg"
+  //        alt=""
+  //        style="width: 100% !important; height: auto !important; object-fit: contain !important; display: block !important; max-width: 100% !important;" />
 
-    <div style="width: 100% !important; height: fit-content !important; margin-top: 2% !important; margin-bottom: 7% !important; display: block !important; justify-content: center !important;">
-      ${addJobKoreaTableStyles(description, descriptionFontSize)}
-    </div>
+  //   <div style="width: 100% !important; height: fit-content !important; margin-top: 2% !important; margin-bottom: 7% !important; display: block !important; justify-content: center !important;">
+  //     ${addJobKoreaTableStyles(description, descriptionFontSize)}
+  //   </div>
 
-    <img src="https://i.imgur.com/KsijpzW.jpeg"
-         alt=""
-         style="width: 100% !important; height: auto !important; object-fit: contain !important; display: block !important; max-width: 100% !important; margin-bottom: 10% !important;" />
+  //   <img src="https://i.imgur.com/KsijpzW.jpeg"
+  //        alt=""
+  //        style="width: 100% !important; height: auto !important; object-fit: contain !important; display: block !important; max-width: 100% !important; margin-bottom: 10% !important;" />
 
-    <div style="width: 100% !important; background-color: #cf152d !important; padding-bottom: 10% !important;">
-      <img src="https://i.imgur.com/hk6MS8M.jpeg"
-           alt=""
-           style="width: 100% !important; height: auto !important; object-fit: contain !important; display: block !important; max-width: 100% !important; margin-bottom: 2% !important;" />
-      <div style="width: 90% !important; background-color: #ffffff !important; border-radius: 24px !important; margin: 0 auto !important; padding: 3% 0 !important;">
-        ${Object.entries(benefits)
-          .filter(([_, items]) => items.length > 0)
-          .map(
-            ([category, items], index, array) => `
-            <div style="width: 100% !important; display: flex !important;">
-              <div style="width: 12% !important; margin: auto 0 !important; margin-left: 6% !important;">
-                <img src="${getCategoryIcon(category)}"
-                     alt=""
-                     style="width: 100% !important; height: auto !important; object-fit: contain !important; display: block !important; max-width: 60px !important;" />
-              </div>
-              <div style="width: 70% !important; margin-right: 6% !important; padding: 5% 0 !important; margin-left: 20px !important;">
-                <h3 style="margin: 0 !important;">
-                  <p style="line-height: 1.8 !important; margin: 0 !important;">
-                    <b>
-                      <span style="font-size: calc(100% + 1vmin) !important; margin-bottom: 5% !important;">
-                        ${category}
-                      </span>
-                    </b>
-                  </p>
-                </h3>
-                <p style="margin: 0 !important; font-size: 16px !important; line-height: 20px !important; word-break: keep-all !important; word-wrap: break-word !important;">
-  ${items.join(", ")}
-</p>
-              </div>
-            </div>
-            ${
-              index < array.length - 1
-                ? `<div style="width: 88% !important; height: 1px !important; background-color: #D1D5DB !important; margin: 0 auto !important;"></div>`
-                : ""
-            }
-          `
-          )
-          .join("")}
-      </div>
-    </div>
+  //   <div style="width: 100% !important; background-color: #cf152d !important; padding-bottom: 10% !important;">
+  //     <img src="https://i.imgur.com/hk6MS8M.jpeg"
+  //          alt=""
+  //          style="width: 100% !important; height: auto !important; object-fit: contain !important; display: block !important; max-width: 100% !important; margin-bottom: 2% !important;" />
+  //     <div style="width: 90% !important; background-color: #ffffff !important; border-radius: 24px !important; margin: 0 auto !important; padding: 3% 0 !important;">
+  //       ${Object.entries(benefits)
+  //         .filter(([_, items]) => items.length > 0)
+  //         .map(
+  //           ([category, items], index, array) => `
+  //           <div style="width: 100% !important; display: flex !important;">
+  //             <div style="width: 12% !important; margin: auto 0 !important; margin-left: 6% !important;">
+  //               <img src="${getCategoryIcon(category)}"
+  //                    alt=""
+  //                    style="width: 100% !important; height: auto !important; object-fit: contain !important; display: block !important; max-width: 60px !important;" />
+  //             </div>
+  //             <div style="width: 70% !important; margin-right: 6% !important; padding: 5% 0 !important; margin-left: 20px !important;">
+  //               <h3 style="margin: 0 !important;">
+  //                 <p style="line-height: 1.8 !important; margin: 0 !important;">
+  //                   <b>
+  //                     <span style="font-size: calc(100% + 1vmin) !important; margin-bottom: 5% !important;">
+  //                       ${category}
+  //                     </span>
+  //                   </b>
+  //                 </p>
+  //               </h3>
+  //               <p style="margin: 0 !important; font-size: 16px !important; line-height: 20px !important; word-break: keep-all !important; word-wrap: break-word !important;">
+  // ${items.join(", ")}
+  // </p>
+  //             </div>
+  //           </div>
+  //           ${
+  //             index < array.length - 1
+  //               ? `<div style="width: 88% !important; height: 1px !important; background-color: #D1D5DB !important; margin: 0 auto !important;"></div>`
+  //               : ""
+  //           }
+  //         `
+  //         )
+  //         .join("")}
+  //     </div>
+  //   </div>
 
-    <img src="${bottomImageUrl}"
-     alt=""
-     style="width: 100% !important; height: auto !important; object-fit: contain !important; display: block !important; max-width: 100% !important; margin-top: 10% !important;" />
+  //   <img src="${bottomImageUrl}"
+  //    alt=""
+  //    style="width: 100% !important; height: auto !important; object-fit: contain !important; display: block !important; max-width: 100% !important; margin-top: 10% !important;" />
 
-    <div style="width: 100% !important; margin-bottom: 6% !important;">
-      <img src="https://i.imgur.com/7YIkYEc.jpeg"
-           alt=""
-           style="width: 100% !important; height: auto !important; object-fit: contain !important; display: block !important; max-width: 100% !important; margin-top: 5% !important;" />
-      <div style="width: 100% !important; display: flex !important; justify-content: center !important; background-color: #ffffff !important;">
-        ${getFooterLinks()
-          .map(
-            (link) => `
-            <a href="${link.href}"
-               style="display: block !important; width: 22% !important; margin: 1% 2% !important; cursor: pointer !important;"
-               target="_blank"
-               title="${link.title}">
-              <div style="position: relative !important; width: 100% !important; padding-bottom: 100% !important;">
-                <img src="${link.imgSrc}"
-                     alt=""
-                     style="position: absolute !important; top: 0 !important; left: 0 !important; width: 100% !important; height: 100% !important; object-fit: contain !important;" />
-              </div>
-            </a>
-          `
-          )
-          .join("")}
-      </div>
-    </div>
+  //   <div style="width: 100% !important; margin-bottom: 6% !important;">
+  //     <img src="https://i.imgur.com/7YIkYEc.jpeg"
+  //          alt=""
+  //          style="width: 100% !important; height: auto !important; object-fit: contain !important; display: block !important; max-width: 100% !important; margin-top: 5% !important;" />
+  //     <div style="width: 100% !important; display: flex !important; justify-content: center !important; background-color: #ffffff !important;">
+  //       ${getFooterLinks()
+  //         .map(
+  //           (link) => `
+  //           <a href="${link.href}"
+  //              style="display: block !important; width: 22% !important; margin: 1% 2% !important; cursor: pointer !important;"
+  //              target="_blank"
+  //              title="${link.title}">
+  //             <div style="position: relative !important; width: 100% !important; padding-bottom: 100% !important;">
+  //               <img src="${link.imgSrc}"
+  //                    alt=""
+  //                    style="position: absolute !important; top: 0 !important; left: 0 !important; width: 100% !important; height: 100% !important; object-fit: contain !important;" />
+  //             </div>
+  //           </a>
+  //         `
+  //         )
+  //         .join("")}
+  //     </div>
+  //   </div>
 
-    <img src="https://i.imgur.com/eLoh8fZ.jpeg"
-         alt=""
-         style="width: 100% !important; height: auto !important; object-fit: contain !important; display: block !important; max-width: 100% !important;" />
-  </div>
-  `.trim();
+  //   <img src="https://i.imgur.com/eLoh8fZ.jpeg"
+  //        alt=""
+  //        style="width: 100% !important; height: auto !important; object-fit: contain !important; display: block !important; max-width: 100% !important;" />
+  // </div>
+  // `.trim();
 
-    if (navigator.clipboard && window.isSecureContext) {
-      navigator.clipboard
-        .writeText(htmlContent)
-        .then(() => alert("잡코리아용 HTML이 클립보드에 복사되었습니다!"))
-        .catch((err) => {
-          console.error("Clipboard API 실패, fallback 사용:", err);
-          fallbackCopyTextToClipboard(htmlContent);
-        });
-    } else {
-      fallbackCopyTextToClipboard(htmlContent);
-    }
-  };
+  //   if (navigator.clipboard && window.isSecureContext) {
+  //     navigator.clipboard
+  //       .writeText(htmlContent)
+  //       .then(() => alert("잡코리아용 HTML이 클립보드에 복사되었습니다!"))
+  //       .catch((err) => {
+  //         console.error("Clipboard API 실패, fallback 사용:", err);
+  //         fallbackCopyTextToClipboard(htmlContent);
+  //       });
+  //   } else {
+  //     fallbackCopyTextToClipboard(htmlContent);
+  //   }
+  // };
 
-  const addJobKoreaTableStyles = (html, fontSize = 16) => {
-    if (!html) return "";
+  // const addJobKoreaTableStyles = (html, fontSize = 16) => {
+  //   if (!html) return "";
 
-    // HTML을 파싱하여 모든 td 태그에 폰트 사이즈 적용
-    let styledHtml = html.replace(
-      /<td([^>]*)>/g,
-      `<td$1 style="font-size: ${fontSize}px !important; line-height: ${
-        fontSize * 1.5
-      }px !important;">`
-    );
+  //   // HTML을 파싱하여 모든 td 태그에 폰트 사이즈 적용
+  //   let styledHtml = html.replace(
+  //     /<td([^>]*)>/g,
+  //     `<td$1 style="font-size: ${fontSize}px !important; line-height: ${
+  //       fontSize * 1.5
+  //     }px !important;">`
+  //   );
 
-    return `
-  <div style="width: 100% !important; height: fit-content !important; margin-top: 2% !important; margin-bottom: 7% !important; display: block !important; justify-content: center !important;">
-    <figure class="table" style="width: 80% !important; margin: 0 auto !important;">
-      ${styledHtml}
-    </figure>
-  </div>
-  `.trim();
-  };
+  //   return `
+  // <div style="width: 100% !important; height: fit-content !important; margin-top: 2% !important; margin-bottom: 7% !important; display: block !important; justify-content: center !important;">
+  //   <figure class="table" style="width: 80% !important; margin: 0 auto !important;">
+  //     ${styledHtml}
+  //   </figure>
+  // </div>
+  // `.trim();
+  // };
 
   // 이미지로 저장하는 함수
   const saveAsImage = async () => {
@@ -480,7 +481,6 @@ const Preview = ({
 
       // 미리보기 요소의 스크롤 높이 가져오기
       const scrollHeight = previewRef.current.scrollHeight;
-      const clientHeight = previewRef.current.clientHeight;
 
       // 캔버스 옵션 설정
       const options = {
@@ -701,6 +701,7 @@ const Preview = ({
                   href={link.href}
                   className="block w-[22%] mx-[2%] my-[1%]"
                   target="_blank"
+                  rel="noreferrer"
                   title={link.title}
                 >
                   <div className="relative w-full pb-[100%]">
