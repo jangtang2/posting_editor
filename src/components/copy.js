@@ -155,7 +155,7 @@ const Preview = ({ title, description, benefits }) => {
     const htmlContent = `
   <div style="background-color: #ffffff !important; width: 100% !important; max-width: 100% !important; margin: 0 auto !important; font-family: system-ui, -apple-system, sans-serif !important;">
     <div style="position: relative !important; width: 100% !important;">
-      <img src="https://i.imgur.com/PsqtcKD.png"
+      <img src="https://i.imgur.com/x8vvJ5u.png"
            alt=""
            style="width: 100% !important; height: auto !important; object-fit: contain !important; display: block !important; max-width: 100% !important;" />
       <h1 style="color: #000000 !important; position: absolute !important; z-index: 5 !important; bottom: 22% !important; left: 8% !important; margin: 0 !important; font-size: calc(100% + 2vmin) !important;">
@@ -308,7 +308,7 @@ const Preview = ({ title, description, benefits }) => {
       <div ref={previewRef} className="bg-white w-full">
         <div className="relative w-full">
           <img
-            src="https://i.imgur.com/PsqtcKD.png"
+            src="https://i.imgur.com/x8vvJ5u.png"
             alt=""
             className="w-full h-auto"
             style={{ objectFit: "contain" }}
